@@ -1,0 +1,43 @@
+<div class="todo-container">
+  <div class="todo-checkbox">
+    <div class="checkbox-wrapper-40">
+      <label>
+        <input
+          type="checkbox"
+          id="todo-{{ todo.id }}"
+          [checked]="todo.status"
+          (change)="toggleStatus()" />
+        <span class="checkbox"></span>
+      </label>
+    </div>
+    <label
+      class="todo-title"
+      [ngClass]="{ checked: todo.status, unchecked: !todo.status }"
+      for="todo-{{ todo.id }}"
+      >{{ todo.title }}</label
+    >
+  </div>
+  <div class="todo-description">
+    {{ todo.description }}
+  </div>
+
+  <div class="todo-additional-info">
+    <div class="todo-badges">
+      @for (badge of todo.badges; track badge) {
+        <div class="badge badge-{{ badge }}">
+          {{ badge }}
+        </div>
+      }
+    </div>
+    <div class="todo-duration" *ngIf="todo.duration">
+      <img
+        src="/assets/icons/clock.svg"
+        alt="clock image"
+        class="duration-image" />
+      <p class="todo-duration-text">
+        {{ todo.duration[0] | date: 'h:mm' }} -
+        {{ todo.duration[1] | date: 'h:mm' }}
+      </p>
+    </div>
+  </div>
+</div>

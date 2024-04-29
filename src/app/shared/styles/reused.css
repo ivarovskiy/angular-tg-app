@@ -1,0 +1,10 @@
+.title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29px;
+    letter-spacing: 0;
+}
+
+.flex-row {
+    display: flex;
+}

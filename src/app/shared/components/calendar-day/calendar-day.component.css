@@ -1,0 +1,42 @@
+.day {
+  margin: 0;
+  width: 64px;
+  height: 80px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+
+  padding: 12px 16px;
+
+  border-radius: 24px;
+  background: rgb(30, 31, 36);
+}
+
+.day:focus {
+  outline: none;
+  background-color: rgb(29, 119, 255);
+}
+
+.day-of-the-week {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.day-of-the-month {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+}
+
+.selected {
+  background-color: rgb(29, 119, 255);
+}

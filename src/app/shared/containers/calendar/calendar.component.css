@@ -1,0 +1,12 @@
+.calendar {
+    display: flex;
+    gap: 8px;
+
+    outline: none;
+    overflow-x: auto;
+}
+
+.calendar::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}

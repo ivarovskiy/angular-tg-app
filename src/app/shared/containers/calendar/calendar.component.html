@@ -1,0 +1,8 @@
+<div class="calendar">
+  @for (day of daysOfWeek; track day) {
+    <app-calendar-day
+      [day]="day"
+      [selectedDay]="selectedDay"
+      (dayClick)="onDayClick($event)"></app-calendar-day>
+  }
+</div>

@@ -1,0 +1,80 @@
+/* RESET */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+a,
+img,
+span,
+input,
+button {
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    height: auto;
+}
+
+input,
+button {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+sub {
+    vertical-align: baseline;
+}
+
+sup {
+    vertical-align: top;
+}
+
+sub, sup {
+    font-size: 0.75em;
+}
+
+html {
+    font-family: 'Gilroy';
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    height: 100vh;
+    /* background-color: var(--tg-theme-bg-color); */
+    background-color: rgb(16, 17, 20);;
+    color: var(--tg-theme-text-color);
+}
+
+body::-webkit-scrollbar {
+    width: 0;
+}
+
+:focus-visible {
+    outline-offset: 2px;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+

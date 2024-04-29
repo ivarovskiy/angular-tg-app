@@ -1,0 +1,5 @@
+<button class="day" (click)="onClick()" [ngClass]="{ selected: isSelected() }">
+  <span class="day-of-the-week">{{ day | date: 'ccc' }}</span>
+  <img src="/assets/icons/calendar-day_line.svg" alt="" />
+  <span class="day-of-the-month">{{ day | date: 'd' }}</span>
+</button>

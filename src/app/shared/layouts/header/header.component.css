@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-balance {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.burning-balance, .token-balance {
+    display: flex;
+    gap: 12px;
+}
+
+.balance-icon {
+    width: 24px;
+}
+
+.user-avatar-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-avatar {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+}
