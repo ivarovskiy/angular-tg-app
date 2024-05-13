@@ -1,0 +1,18 @@
+<div class="leader-card">
+  <div class="leader-info">
+    <div class="leader-league">
+      <img [src]="getLeaderLeague()" alt="league" />
+    </div>
+
+    <img
+      [src]="user.userImageProfile"
+      alt="image profile"
+      appMissingImage
+      class="leader-avatar" />
+
+    <p class="leader-name">{{ user.name }}</p>
+  </div>
+  <p class="leader-points">
+    {{ getLeaderPoints() }}
+  </p>
+</div>

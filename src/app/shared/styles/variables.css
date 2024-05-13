@@ -1,3 +1,5 @@
 :root {
-    
+    --primary: rgb(29, 119, 255);
+    --primary-text-color: white;
+    --secondary-text-color: #AEAEB4;
 }

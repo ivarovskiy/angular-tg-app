@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { TodoComponent } from '@components/todo/todo.component';
+import { TodoCardComponent } from '@components/todo-card/todo-card.component';
 import { ITodo } from '@models/todo.interface';
 import { TodoService } from '@services/todo.service';
 import { Observable, Subscription } from 'rxjs';
@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-todo-list',
   standalone: true,
-  imports: [TodoComponent, AsyncyPipe, CommonModule],
+  imports: [TodoCardComponent, AsyncyPipe, CommonModule],
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.css',
 })

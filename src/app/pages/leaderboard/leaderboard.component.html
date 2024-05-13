@@ -1,0 +1,13 @@
+<section class="leaderboard container">
+  <h1 class="title">Leaderboard</h1>
+  <div class="leaderboard-navigation">
+    <button class="active">Weekly</button>
+    <button>Monthly</button>
+    <button>All Time</button>
+  </div>
+  <div class="leaderboard-profiles">
+    <ng-container *ngFor="let user of users">
+      <app-leader-card [user]="user"></app-leader-card>
+    </ng-container>
+  </div>
+</section>

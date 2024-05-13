@@ -1,0 +1,57 @@
+.p-icon-wrapper {
+  color: var(--primary);
+
+  width: 9px;
+  height: 16px;
+}
+
+.p-datepicker td > span {
+  font-size: 16px;
+  font-weight: 600;
+
+  font-family: Gilroy;
+
+  line-height: 19px;
+}
+
+.p-datepicker-header {
+  display: grid;
+  grid-template-columns: 1fr repeat(2, 0) repeat(2, 9px);
+  grid-column-gap: 40px;
+  margin-bottom: 24px;
+}
+
+.p-datepicker-header .p-datepicker-title {
+  font-family: Gilroy;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+
+  display: flex;
+  gap: 4px;
+
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.p-datepicker table th {
+  color: rgb(174, 174, 180);
+
+  font-family: Gilroy;
+
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+}
+
+.p-datepicker-prev {
+  grid-area: 1 / 4 / 2 / 5;
+}
+
+.p-datepicker-next {
+  grid-area: 1 / 5 / 2 / 6;
+}
+
+.p-divider-solid.p-divider-vertical:before {
+  /* border: 1px; */
+  /* border-left-style: 1px; */
+}

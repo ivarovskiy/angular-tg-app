@@ -10,9 +10,9 @@
         <ul class="todo-list">
           @for (todo of todos; track todo) {
             <li>
-              <app-todo
+              <app-todo-card
                 [todo]="todo"
-                (toogleTodoStatus)="handleTodoStatus($event)"></app-todo>
+                (toogleTodoStatus)="handleTodoStatus($event)"></app-todo-card>
             </li>
           }
         </ul>

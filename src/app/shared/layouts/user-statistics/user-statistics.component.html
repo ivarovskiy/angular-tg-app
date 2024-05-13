@@ -1,0 +1,25 @@
+<header class="header">
+  <div class="user-balance">
+    <div class="burning-balance">
+      <img
+        src="/assets/icons/fire.svg"
+        alt="days in fire icon"
+        class="balance-icon" />
+      <span class="title">{{ user.burningDays | thousandSeparator }}</span>
+    </div>
+    <div class="token-balance">
+      <img
+        src="/assets/icons/diamond_header.svg"
+        alt="token balance icon"
+        class="balance-icon" />
+      <span class="title">{{ user.tokenBalance | thousandSeparator }}</span>
+    </div>
+  </div>
+  <button class="user-avatar-wrapper" (click)="openProfile()">
+    <img
+      [src]="user.userImageProfile"
+      alt="image profile"
+      appMissingImage
+      class="user-avatar" />
+  </button>
+</header>

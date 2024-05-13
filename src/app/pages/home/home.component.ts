@@ -1,19 +1,22 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '@layouts/header/header.component';
-import { FooterComponent } from '@layouts/footer/footer.component';
-import { CalendarComponent } from '@containers/calendar/calendar.component';
-import { ChestComponent } from '@components/chest/chest.component';
+import { UserStatisticsComponent } from '@layouts/user-statistics/user-statistics.component';
+import { NavigationButtonsComponent } from '@layouts/navigation-buttons/navigation-buttons.component';
+import { WeekDaysComponent } from '@containers/week-days/week-days.component';
+import { RewardCardComponent } from '@components/reward-card/reward-card.component';
 import { TodoListComponent } from '@containers/todo-list/todo-list.component';
-
+import { CreateNewTaskComponent } from '@containers/create-new-task/create-new-task.component';
+import { CalendarComponent } from '@components/calendar/calendar.component';
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
-    HeaderComponent,
-    FooterComponent,
-    CalendarComponent,
-    ChestComponent,
+    UserStatisticsComponent,
+    NavigationButtonsComponent,
+    WeekDaysComponent,
+    RewardCardComponent,
     TodoListComponent,
+    CreateNewTaskComponent,
+    CalendarComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',

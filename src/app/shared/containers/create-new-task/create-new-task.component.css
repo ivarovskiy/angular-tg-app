@@ -1,0 +1,136 @@
+.create-new-task {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transition: all 0.3s ease;
+  z-index: 100;
+
+  padding: 24px 16px 32px 16px;
+  border-radius: 24px 24px 0px 0px;
+
+  background-color: #101114;
+
+  display: flex;
+  flex-direction: column;
+
+  user-select: none;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-title {
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.save-button {
+  color: var(--primary);
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+}
+
+.main-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.input {
+  font-family: Gilroy;
+
+  outline: none;
+
+  caret-color: var(--primary);
+}
+
+.input-title {
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.input-description {
+  color: rgb(174, 174, 180);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.additional-info {
+  display: flex;
+
+  gap: 8px;
+}
+
+.additional-info-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 12px;
+  width: fit-content;
+
+  color: #ffffff;
+  font-family: Gilroy;
+  font-size: 14px;
+  font-weight: 600;
+
+  background: rgb(30, 31, 36);
+  padding: 8px 12px 8px 12px;
+}
+
+.large-container-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.additional-info-button.picked {
+  color: #1d77ff;
+}
+
+.time-picker {
+  display: flex;
+  gap: 8px;
+}
+
+.p-placeholder {
+  color: rgb(71, 71, 78);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.create-new-task.show {
+  transform: translateY(0); /* Show on trigger */
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.full-screen-button {
+  padding: 9px;
+  font-family: Gilroy;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 17px;
+  color: rgb(255, 255, 255);
+}

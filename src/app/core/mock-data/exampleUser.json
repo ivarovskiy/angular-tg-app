@@ -1,8 +1,14 @@
 {
   "user1": {
     "id": 1,
-    "userImageProfile": "https://data.chpic.su/stickers/p/Penis_Detrov/Penis_Detrov_003.webp",
+    "name": "Жмышенко Валерий Альбертович",
+    "friends": 5,
+    "invitation": 12,
+    "achievements": 3,
+    "currentLeague": "Gold",
+    "taskCompleted": 120,
+    "userImageProfile": "https://pbs.twimg.com/media/EKZ9cXdWkAA_U6B.jpg",
     "burningDays": 365,
-    "tokenBalance": 120121
+    "tokenBalance": 12021
   }
 }

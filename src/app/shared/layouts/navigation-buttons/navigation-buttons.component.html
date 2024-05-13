@@ -1,0 +1,16 @@
+<footer class="footer">
+  <div class="buttons-group">
+    <button
+      *ngFor="let button of buttons"
+      class="button"
+      [class.add]="button.add"
+      (click)="navigateTo(button.path)"
+      (keyup.enter)="navigateTo(button.path)"
+      tabindex="0">
+      <img
+        [src]="button.active ? button.activeIcon : button.icon"
+        alt="icon"
+        [attr.aria-label]="button.path" />
+    </button>
+  </div>
+</footer>

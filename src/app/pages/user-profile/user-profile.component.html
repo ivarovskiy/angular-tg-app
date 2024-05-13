@@ -1,0 +1,93 @@
+<section class="profile container">
+  <div class="image-wrapper">
+    <button (click)="goBack()" class="back-button">
+      <img src="/assets/icons/profile/chevron-left.svg" alt="go back" />
+    </button>
+    <div class="avatar">
+      <img
+        [src]="user.userImageProfile"
+        alt="image profile"
+        appMissingImage
+        class="user-avatar" />
+    </div>
+  </div>
+  <div class="user-name">
+    {{ user.name }}
+  </div>
+  <div class="user-acquisition-statistics-wrapper">
+    <div class="user-acquisition-statistics">
+      <p>{{ user.friends }}</p>
+      <p class="secondary-text">friends</p>
+    </div>
+
+    <div class="divider"></div>
+    <!-- <p-divider layout="vertical" /> -->
+
+    <div class="user-acquisition-statistics">
+      <p>{{ user.invitation }}</p>
+      <p class="secondary-text">invitation</p>
+    </div>
+
+    <div class="divider"></div>
+    <!-- <p-divider layout="vertical" style="width: 1px" /> -->
+
+    <div class="user-acquisition-statistics">
+      <p>{{ user.achievements }}</p>
+      <p class="secondary-text">achievements</p>
+    </div>
+  </div>
+  <button class="invite-button" (click)="invite()">
+    Invite a friend +200x
+  </button>
+  <h1>Your Statistics</h1>
+
+  <div class="statistics-card-wrapper">
+    <div class="statistics-card">
+      <img src="/assets/icons/profile/fire.svg" alt="fire icon" />
+      <div class="statistics-card-info">
+        <p>{{ user.burningDays }}</p>
+        <p class="secondary-text">Shock mode</p>
+      </div>
+    </div>
+    <div class="statistics-card">
+      <img src="/assets/icons/profile/diamond.svg" alt="diamond icon" />
+      <div class="statistics-card-info">
+        <p>{{ user.tokenBalance }}</p>
+        <p class="secondary-text">XP points</p>
+      </div>
+    </div>
+    <div class="statistics-card">
+      <img [src]="getLeagueIcon()" alt="gold icon" style="width: 32px" />
+      <div class="statistics-card-info">
+        <p>{{ user.currentLeague }}</p>
+        <p class="secondary-text">Current league</p>
+      </div>
+    </div>
+    <div class="statistics-card">
+      <img src="/assets/icons/profile/aim.svg" alt="ain icon" />
+      <div class="statistics-card-info">
+        <p>{{ user.taskCompleted }}</p>
+        <p class="secondary-text">Task completed</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="achievements-navigation-wrapper">
+    <h1 style="margin-bottom: 0">Your Achievements</h1>
+    <button class="next-button" (click)="nextAchievement()">
+      <img src="/assets/icons/profile/arrow-right.svg" alt="go next" />
+    </button>
+  </div>
+
+  <div class="league-card-wrapper">
+    <div class="league-card">
+      <img src="/assets/icons/profile/gold-league.svg" alt="gold league" />
+    </div>
+    <div class="league-card">
+      <img src="/assets/icons/profile/silver-league.svg" alt="silver league" />
+    </div>
+    <div class="league-card">
+      <img src="/assets/icons/profile/bronze-league.svg" alt="bronze league" />
+    </div>
+  </div>
+</section>
