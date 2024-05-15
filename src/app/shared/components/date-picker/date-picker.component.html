@@ -1,7 +1,9 @@
 <p-calendar
-  class="max-w-full calendar"
+  class="max-w-full"
   [(ngModel)]="date"
   [inline]="true"
-  [readonlyInput]="true" />
+  [readonlyInput]="true"
+  [showOtherMonths]="false"
+  [minDate]="todayDate" />
 
 <button class="save" (click)="saveCalendar()">Save</button>

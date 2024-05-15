@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { TodoCardComponent } from '@components/todo-card/todo-card.component';
 import { ITodo } from '@models/todo.interface';
 import { TodoService } from '@services/todo.service';
@@ -14,6 +14,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './todo-list.component.css',
 })
 export class TodoListComponent implements OnInit {
+  @Input() isCalendarPage?: boolean;
+
   todoService = inject(TodoService);
 
   todos$!: Observable<ITodo[]>;

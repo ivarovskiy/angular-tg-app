@@ -26,12 +26,14 @@ import { DisplayService } from '@services/display.service';
 import { Subscription } from 'rxjs';
 import { ResizeToggleDirective } from '@directives/resize-toggle.directive';
 import { CommonModule } from '@angular/common';
+import { DatePickerComponent } from '@components/date-picker/date-picker.component';
 
 @Component({
   selector: 'app-create-new-task',
   standalone: true,
   imports: [
     InputTextModule,
+    DatePickerComponent,
     ReactiveFormsModule,
     ResizeToggleDirective,
     CommonModule,
@@ -40,8 +42,14 @@ import { CommonModule } from '@angular/common';
   styleUrl: './create-new-task.component.css',
   animations: [
     trigger('slideInOut', [
-      state('in', style({ height: 'fit-content', opacity: 1 })),
-      state('out', style({ height: '416px', opacity: 0, display: 'none' })),
+      state(
+        'in',
+        style({ height: '*', opacity: 1, transform: 'translateY(0%)' })
+      ),
+      state(
+        'out',
+        style({ height: '0px', opacity: 0, transform: 'translateY(100%)' })
+      ),
       transition('out => in', animate('300ms ease-in')),
       transition('in => out', animate('300ms ease-out')),
     ]),
@@ -62,6 +70,7 @@ export class CreateNewTaskComponent
   animationState: string = '';
   currentHeight!: number;
   taskForm!: FormGroup;
+  showDatePicker: boolean = false;
 
   constructor(private elementRef: ElementRef) {
     this.resizeObserver = new ResizeObserver(entries => {
@@ -102,5 +111,13 @@ export class CreateNewTaskComponent
 
   toggleAnimation() {
     this.displayService.toggleDisplay();
+  }
+
+  toggleDatePicker() {
+    this.showDatePicker = !this.showDatePicker;
+  }
+
+  changeCurrentHight() {
+    this.currentHeight = 360;
   }
 }

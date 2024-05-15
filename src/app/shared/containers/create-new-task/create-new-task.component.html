@@ -4,80 +4,91 @@
   class="create-new-task"
   [formGroup]="taskForm"
   class="create-new-task">
-  <div class="navigation" appResizeToggle>
-    <button (click)="toggleAnimation()">
-      <img src="/assets/icons/task/chevron-left.svg" alt="back" />
-    </button>
-    <p class="section-title">Create new task</p>
-    <button (click)="saveTask()" class="save-button">Save</button>
-  </div>
+  <div *ngIf="!showDatePicker">
+    <div class="resizeTap" appResizeToggle></div>
+    <div class="navigation">
+      <button (click)="toggleAnimation()">
+        <img src="/assets/icons/task/chevron-left.svg" alt="back" />
+      </button>
+      <p class="section-title">Create new task</p>
+      <button (click)="saveTask()" class="save-button">Save</button>
+    </div>
 
-  <div class="main-info">
-    <input
-      type="text"
-      pInputText
-      class="input input-title"
-      placeholder="Task Title"
-      formControlName="title" />
-    <input
-      type="text"
-      pInputText
-      class="input input-description"
-      placeholder="Description"
-      formControlName="description" />
-  </div>
+    <div class="main-info">
+      <input
+        type="text"
+        pInputText
+        class="input input-title"
+        placeholder="Task Title"
+        formControlName="title" />
+      <input
+        type="text"
+        pInputText
+        class="input input-description"
+        placeholder="Description"
+        formControlName="description" />
+    </div>
 
-  @if (currentHeight < 350) {
-    <div class="additional-info">
-      <div class="time-picker">
-        <button class="additional-info-button picked">
-          <img src="/assets/icons/task/calendar.svg" alt="calendar" /> Today
+    @if (currentHeight < 350) {
+      <div class="additional-info">
+        <div class="time-picker">
+          <button
+            class="additional-info-button picked"
+            (click)="toggleDatePicker()">
+            <img src="/assets/icons/task/calendar.svg" alt="calendar" /> Today
+          </button>
+          <button class="additional-info-button">
+            <img src="/assets/icons/task/clock.svg" alt="calendar" /> Time
+          </button>
+        </div>
+        <button class="additional-info-button">
+          <img src="/assets/icons/task/notification.svg" alt="calendar" />
         </button>
         <button class="additional-info-button">
-          <img src="/assets/icons/task/clock.svg" alt="calendar" /> Time
+          <img src="/assets/icons/task/tag.svg" alt="calendar" />
+        </button>
+        <button class="additional-info-button" (click)="changeCurrentHight()">
+          <img src="/assets/icons/task/more.svg" alt="calendar" />
         </button>
       </div>
-      <button class="additional-info-button">
-        <img src="/assets/icons/task/notification.svg" alt="calendar" />
-      </button>
-      <button class="additional-info-button">
-        <img src="/assets/icons/task/tag.svg" alt="calendar" />
-      </button>
-      <button class="additional-info-button">
-        <img src="/assets/icons/task/more.svg" alt="calendar" />
-      </button>
-    </div>
-  } @else {
-    <div class="additional-info flex-column">
-      <div class="time-picker">
-        <button class="large-container-button picked">
-          <img src="/assets/icons/task/calendar.svg" alt="calendar" />
-          <p class="additional-info-button">Today</p>
+    } @else {
+      <div class="additional-info flex-column">
+        <div class="time-picker">
+          <button
+            class="large-container-button picked"
+            (click)="toggleDatePicker()">
+            <img src="/assets/icons/task/calendar.svg" alt="calendar" />
+            <p class="additional-info-button">Today</p>
+          </button>
+          <button class="large-container-button">
+            <p class="additional-info-button">Time</p>
+          </button>
+        </div>
+        <button class="large-container-button">
+          <img src="/assets/icons/task/notification.svg" alt="calendar" />
+          <p class="additional-info-button">Add reminder</p>
         </button>
         <button class="large-container-button">
-          <p class="additional-info-button">Time</p>
+          <img src="/assets/icons/task/tag.svg" alt="calendar" />
+          <p class="additional-info-button">Assign tags</p>
+        </button>
+        <button class="large-container-button">
+          <img src="/assets/icons/task/repeat.svg" alt="calendar" />
+          <p class="additional-info-button">Add repeats</p>
+        </button>
+        <button class="large-container-button">
+          <img src="/assets/icons/task/star.svg" alt="calendar" />
+          <p class="additional-info-button">Make it a habit</p>
+        </button>
+        <button class="large-container-button">
+          <img src="/assets/icons/task/gallery.svg" alt="calendar" />
+          <p class="additional-info-button">Add image</p>
         </button>
       </div>
-      <button class="large-container-button">
-        <img src="/assets/icons/task/notification.svg" alt="calendar" />
-        <p class="additional-info-button">Add reminder</p>
-      </button>
-      <button class="large-container-button">
-        <img src="/assets/icons/task/tag.svg" alt="calendar" />
-        <p class="additional-info-button">Assign tags</p>
-      </button>
-      <button class="large-container-button">
-        <img src="/assets/icons/task/repeat.svg" alt="calendar" />
-        <p class="additional-info-button">Add repeats</p>
-      </button>
-      <button class="large-container-button">
-        <img src="/assets/icons/task/star.svg" alt="calendar" />
-        <p class="additional-info-button">Make it a habit</p>
-      </button>
-      <button class="large-container-button">
-        <img src="/assets/icons/task/gallery.svg" alt="calendar" />
-        <p class="additional-info-button">Add image</p>
-      </button>
-    </div>
-  }
+    }
+  </div>
+
+  <div *ngIf="showDatePicker">
+    <app-date-picker (handleSave)="toggleDatePicker()"></app-date-picker>
+  </div>
 </form>

@@ -11,8 +11,8 @@ import {
   standalone: true,
 })
 export class ResizeToggleDirective {
-  @Input() minHeight: string = '220px'; // Начальная минимальная высота
-  @Input() maxHeight: string = '458px'; // Начальная максимальная высота
+  @Input() minHeight: string = '156px'; // Начальная минимальная высота
+  @Input() maxHeight: string = '400px'; // Начальная максимальная высота
   private dragging: boolean = false;
 
   constructor(
@@ -25,24 +25,54 @@ export class ResizeToggleDirective {
   }
 
   @HostListener('mousedown', ['$event']) onMousedown(event: MouseEvent) {
-    this.dragging = true; // Начало изменения размера
-    const parentElement = this.el.nativeElement.parentElement;
-    this.renderer.addClass(parentElement, 'resizing');
+    this.startDrag();
   }
 
   @HostListener('document:mousemove', ['$event']) onMousemove(
     event: MouseEvent
   ) {
+    this.onDrag(event.movementY);
+  }
+
+  @HostListener('document:mouseup', ['$event']) onMouseup(event: MouseEvent) {
+    this.endDrag();
+  }
+
+  @HostListener('touchstart', ['$event']) onTouchstart(event: TouchEvent) {
+    this.startDrag();
+  }
+
+  @HostListener('document:touchmove', ['$event']) onTouchmove(
+    event: TouchEvent
+  ) {
+    if (this.dragging) {
+      const touch = event.touches[0];
+      this.onDrag(
+        touch.clientY - this.el.nativeElement.getBoundingClientRect().top
+      );
+    }
+  }
+
+  @HostListener('document:touchend', ['$event']) onTouchend(event: TouchEvent) {
+    this.endDrag();
+  }
+
+  private startDrag() {
+    this.dragging = true; // Начало изменения размера
+    const parentElement = this.el.nativeElement.parentElement;
+    this.renderer.addClass(parentElement, 'resizing');
+  }
+
+  private onDrag(movementY: number) {
     if (this.dragging) {
       const parentElement = this.el.nativeElement.parentElement;
-      const movementY = event.movementY;
       const newHeight = movementY < 0 ? this.maxHeight : this.minHeight;
 
       this.renderer.setStyle(parentElement, 'height', newHeight);
     }
   }
 
-  @HostListener('document:mouseup', ['$event']) onMouseup(event: MouseEvent) {
+  private endDrag() {
     this.dragging = false; // Завершение изменения размера
     const parentElement = this.el.nativeElement.parentElement;
     this.renderer.removeClass(parentElement, 'resizing');

@@ -20,4 +20,12 @@ export const routes: Routes = [
         c => c.LeaderboardComponent
       ),
   },
+  {
+    path: 'calendar',
+    loadComponent: () =>
+      import('./pages/calendar/calendar.component').then(
+        c => c.CalendarComponent
+      ),
+  },
+  { path: '**', redirectTo: 'home' },
 ];

@@ -17,6 +17,22 @@
   user-select: none;
 }
 
+.resizeTap {
+  position: absolute;
+  left: 50%;
+
+  transform: translateX(-50%);
+  top: 8px;
+
+  width: 36px;
+  height: 4px;
+
+  border-radius: 15%;
+  background-color: #1E1F24;
+
+  cursor: pointer;
+}
+
 .navigation {
   display: flex;
   justify-content: space-between;

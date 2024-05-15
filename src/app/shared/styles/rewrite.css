@@ -1,11 +1,55 @@
 .p-icon-wrapper {
   color: var(--primary);
 
-  width: 9px;
+  width: 16px;
   height: 16px;
 }
 
+.p-inputtext:enabled:focus {
+  box-shadow: none;
+}
+
+.p-datepicker {
+  background-color: rgb(16, 17, 20);
+
+  border: none;
+}
+
+.p-datepicker tbody {
+  color: var(--primary-text-color);
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+}
+
+.p-datepicker table td.p-datepicker-today > span {
+  color: var(--primary);
+  background: none;
+}
+
+.p-datepicker table td.p-datepicker-today > span.p-highlight {
+  color: var(--primary-text-color);
+  background-color: var(--primary);
+}
+
+.p-datepicker table td > span.p-highlight {
+  color: var(--primary-text-color);
+  background-color: var(--primary);
+}
+
+.p-datepicker:not(.p-disabled) table td span:not(.p-highlight):not(.p-disabled):hover {
+  color: var(--primary-text-color);
+  background-color: var(--primary);
+}
+
+.p-datepicker:not(.p-disabled) .p-monthpicker .p-monthpicker-month:not(.p-disabled):not(.p-highlight):hover {
+  color: var(--primary-text-color);
+  background-color: var(--primary);
+}
+
 .p-datepicker td > span {
+  display: inline-flex;
   font-size: 16px;
   font-weight: 600;
 
@@ -16,9 +60,15 @@
 
 .p-datepicker-header {
   display: grid;
-  grid-template-columns: 1fr repeat(2, 0) repeat(2, 9px);
-  grid-column-gap: 40px;
+  grid-template-columns: 1fr repeat(2, 9px);
   margin-bottom: 24px;
+
+  background: rgb(16, 17, 20);
+  color: rgb(255, 255, 255);
+
+  border: none;
+
+  margin-right: 26px;
 }
 
 .p-datepicker-header .p-datepicker-title {
@@ -44,14 +94,45 @@
 }
 
 .p-datepicker-prev {
+  display: inline-flex;
   grid-area: 1 / 4 / 2 / 5;
 }
 
 .p-datepicker-next {
+  display: inline-flex;
   grid-area: 1 / 5 / 2 / 6;
 }
 
-.p-divider-solid.p-divider-vertical:before {
-  /* border: 1px; */
-  /* border-left-style: 1px; */
+.p-datepicker-other-month {
+  opacity: 0;
 }
+
+.p-datepicker .p-yearpicker {
+  width: 100%;
+}
+
+.p-datepicker .p-yearpicker .p-yearpicker-year { 
+  padding: 0.5rem;
+}
+
+.p-yearpicker-year {
+  width: 100%;
+}
+
+.p-datepicker .p-yearpicker .p-yearpicker-year.p-highlight {
+  background-color: var(--primary);
+  color: var(--primary-text-color);
+}
+.p-datepicker .p-monthpicker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Опционально, для пространства между элементами */
+
+}
+
+.p-datepicker .p-monthpicker .p-monthpicker-month {
+  padding: 0.5rem;
+  flex: 1 1 45%;
+}
+
+.p-monthpicker-month {}

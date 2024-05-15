@@ -9,6 +9,11 @@
   overflow: hidden;
 }
 
+.removeBg {
+  background: none;
+  padding: 24px 0 74px 0;
+}   
+
 .todo-scroll {
   /* display: flex;
   flex-direction: column;

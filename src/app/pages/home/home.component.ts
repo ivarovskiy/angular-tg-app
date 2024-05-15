@@ -4,7 +4,6 @@ import { NavigationButtonsComponent } from '@layouts/navigation-buttons/navigati
 import { WeekDaysComponent } from '@containers/week-days/week-days.component';
 import { RewardCardComponent } from '@components/reward-card/reward-card.component';
 import { TodoListComponent } from '@containers/todo-list/todo-list.component';
-import { CalendarComponent } from '@components/calendar/calendar.component';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -14,7 +13,6 @@ import { CalendarComponent } from '@components/calendar/calendar.component';
     WeekDaysComponent,
     RewardCardComponent,
     TodoListComponent,
-    CalendarComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',

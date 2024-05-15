@@ -1,8 +1,10 @@
-<div class="todo-list-container">
-  <div class="todo-list-title">
-    <img src="/assets/icons/task_square.svg" alt="task square" />
-    <h1 class="title">Today's to do list</h1>
-  </div>
+<div class="todo-list-container" [ngClass]="{ removeBg: isCalendarPage }">
+  <ng-container *ngIf="!isCalendarPage">
+    <div class="todo-list-title">
+      <img src="/assets/icons/task_square.svg" alt="task square" />
+      <h1 class="title">Today's to do list</h1>
+    </div>
+  </ng-container>
 
   <ng-container *ngIf="todos$ | asyncy as todos">
     @if (todos.length > 0) {
