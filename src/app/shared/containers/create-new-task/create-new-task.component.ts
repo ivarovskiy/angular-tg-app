@@ -23,20 +23,26 @@ import {
 } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { DisplayService } from '@services/display.service';
-import { Subscription } from 'rxjs';
+import { Subscription, tap } from 'rxjs';
 import { ResizeToggleDirective } from '@directives/resize-toggle.directive';
 import { CommonModule } from '@angular/common';
 import { DatePickerComponent } from '@components/date-picker/date-picker.component';
-
+import { DatePipe } from '@angular/common';
+import { AssignTagsComponent } from '@containers/assign-tags/assign-tags.component';
+import { ITag } from '@models/tag.interface';
+import { TagsService } from '@services/tags.service';
+import { TodoService } from '@services/todo.service';
 @Component({
   selector: 'app-create-new-task',
   standalone: true,
   imports: [
     InputTextModule,
     DatePickerComponent,
+    AssignTagsComponent,
     ReactiveFormsModule,
     ResizeToggleDirective,
     CommonModule,
+    DatePipe,
   ],
   templateUrl: './create-new-task.component.html',
   styleUrl: './create-new-task.component.css',
@@ -61,6 +67,8 @@ export class CreateNewTaskComponent
   @ViewChild('form') formElement!: ElementRef;
 
   displayService = inject(DisplayService);
+  tagsService = inject(TagsService);
+  todoService = inject(TodoService);
   renderer = inject(Renderer2);
   _fb = inject(FormBuilder);
 
@@ -70,7 +78,14 @@ export class CreateNewTaskComponent
   animationState: string = '';
   currentHeight!: number;
   taskForm!: FormGroup;
+
   showDatePicker: boolean = false;
+  showTagsPicker: boolean = false;
+
+  selectedDate!: Date;
+  tags: ITag[] = [];
+  selectedTags!: ITag[];
+  tagsLength!: number;
 
   constructor(private elementRef: ElementRef) {
     this.resizeObserver = new ResizeObserver(entries => {
@@ -84,11 +99,26 @@ export class CreateNewTaskComponent
     this.taskForm = this._fb.group({
       title: ['', Validators.required],
       description: [''],
+      time: ['', Validators.required],
+      tags: [this.tags],
     });
 
     this.subscription = this.displayService.display$.subscribe(display => {
       this.animationState = display;
     });
+
+    this.subscription = this.tagsService.selectedTags$.subscribe(tags => {
+      this.selectedTags = tags;
+    });
+
+    this.subscription = this.tagsService
+      .getSelectedTags()
+      .pipe(
+        tap(tags => {
+          this.tagsLength = tags.length;
+        })
+      )
+      .subscribe();
   }
 
   ngAfterViewInit(): void {
@@ -104,9 +134,20 @@ export class CreateNewTaskComponent
 
   saveTask() {
     if (this.taskForm.valid) {
-      console.log(this.taskForm.value);
+      this.todoService.addTodo(this.taskForm.value);
+      this.taskForm.reset();
+      this.selectedDate = new Date();
+      this.selectedTags = [];
+      this.tagsLength = 0;
       this.toggleAnimation();
+
+      this.tagsService.resetSelectedTags();
     }
+  }
+
+  selectTags(tags: ITag[]) {
+    this.taskForm.patchValue({ tags: tags });
+    this.toogleTagsPicker();
   }
 
   toggleAnimation() {
@@ -117,7 +158,21 @@ export class CreateNewTaskComponent
     this.showDatePicker = !this.showDatePicker;
   }
 
+  toogleTagsPicker() {
+    this.showTagsPicker = !this.showTagsPicker;
+  }
+
+  selectDate(date: Date) {
+    this.selectedDate = date;
+    this.taskForm.patchValue({ time: date });
+    this.toggleDatePicker();
+  }
+
   changeCurrentHight() {
     this.currentHeight = 360;
+  }
+
+  removeTag(tag: ITag) {
+    this.tagsService.selectTag(tag);
   }
 }

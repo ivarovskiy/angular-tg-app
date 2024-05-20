@@ -4,7 +4,7 @@
   class="create-new-task"
   [formGroup]="taskForm"
   class="create-new-task">
-  <div *ngIf="!showDatePicker">
+  <div *ngIf="!showDatePicker && !showTagsPicker">
     <div class="resizeTap" appResizeToggle></div>
     <div class="navigation">
       <button (click)="toggleAnimation()">
@@ -35,20 +35,30 @@
           <button
             class="additional-info-button picked"
             (click)="toggleDatePicker()">
-            <img src="/assets/icons/task/calendar.svg" alt="calendar" /> Today
+            @if (selectedDate) {
+              <img src="/assets/icons/task/calendar.svg" alt="date" />
+              {{ selectedDate | date: 'MMMM d' }}
+            } @else {
+              <img src="/assets/icons/task/calendar.svg" alt="date" /> Today
+            }
           </button>
           <button class="additional-info-button">
-            <img src="/assets/icons/task/clock.svg" alt="calendar" /> Time
+            <img src="/assets/icons/task/clock.svg" alt="time" /> Time
           </button>
         </div>
         <button class="additional-info-button">
-          <img src="/assets/icons/task/notification.svg" alt="calendar" />
+          <img src="/assets/icons/task/notification.svg" alt="notification" />
         </button>
-        <button class="additional-info-button">
-          <img src="/assets/icons/task/tag.svg" alt="calendar" />
+        <button class="additional-info-button" (click)="toogleTagsPicker()">
+          @if (!selectedTags || tagsLength === 0) {
+            <img src="/assets/icons/task/tag.svg" alt="tag" />
+          } @else {
+            <img src="/assets/icons/task/tag-active.svg" alt="tag" />
+            <p class="picked">{{ tagsLength }}</p>
+          }
         </button>
         <button class="additional-info-button" (click)="changeCurrentHight()">
-          <img src="/assets/icons/task/more.svg" alt="calendar" />
+          <img src="/assets/icons/task/more.svg" alt="more" />
         </button>
       </div>
     } @else {
@@ -58,7 +68,13 @@
             class="large-container-button picked"
             (click)="toggleDatePicker()">
             <img src="/assets/icons/task/calendar.svg" alt="calendar" />
-            <p class="additional-info-button">Today</p>
+            @if (selectedDate) {
+              <p class="additional-info-button picked">
+                {{ selectedDate | date: 'MMMM d' }}
+              </p>
+            } @else {
+              <p class="additional-info-button">Today</p>
+            }
           </button>
           <button class="large-container-button">
             <p class="additional-info-button">Time</p>
@@ -68,10 +84,33 @@
           <img src="/assets/icons/task/notification.svg" alt="calendar" />
           <p class="additional-info-button">Add reminder</p>
         </button>
-        <button class="large-container-button">
+
+        <div class="large-container-button">
           <img src="/assets/icons/task/tag.svg" alt="calendar" />
-          <p class="additional-info-button">Assign tags</p>
-        </button>
+
+          @if (selectedTags && selectedTags.length > 0) {
+            <div class="tags-wrapper">
+              <ng-container *ngFor="let tag of selectedTags">
+                <div class="tag-card" [style.background]="tag.color">
+                  {{ tag.name }}
+                  <button (click)="removeTag(tag)">
+                    <img
+                      src="/assets/icons/tag/dismiss.svg"
+                      alt="dismiss tag" />
+                  </button>
+                </div>
+              </ng-container>
+              <button (click)="toogleTagsPicker()" class="add-tag">
+                <img src="/assets/icons/tag/add.svg" alt="add tag" />
+              </button>
+            </div>
+          } @else {
+            <button class="large-container-button" (click)="toogleTagsPicker()">
+              <p class="additional-info-button">Assign tags</p>
+            </button>
+          }
+        </div>
+
         <button class="large-container-button">
           <img src="/assets/icons/task/repeat.svg" alt="calendar" />
           <p class="additional-info-button">Add repeats</p>
@@ -88,7 +127,12 @@
     }
   </div>
 
+  <div *ngIf="showTagsPicker">
+    <app-assign-tags
+      (cancel)="toogleTagsPicker()"
+      (assignTags)="selectTags($event)"></app-assign-tags>
+  </div>
   <div *ngIf="showDatePicker">
-    <app-date-picker (handleSave)="toggleDatePicker()"></app-date-picker>
+    <app-date-picker (handleSave)="selectDate($event)"></app-date-picker>
   </div>
 </form>

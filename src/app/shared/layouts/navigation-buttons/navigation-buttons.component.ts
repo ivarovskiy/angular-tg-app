@@ -56,7 +56,7 @@ export class NavigationButtonsComponent implements OnInit {
     {
       path: '/features',
       icon: `${this.absoluteIconPath}/features.svg`,
-      activeIcon: `${this.absoluteIconPath}/features-active.svg`,
+      activeIcon: `${this.absoluteIconPath}/features.svg`,
       active: false,
     },
   ];

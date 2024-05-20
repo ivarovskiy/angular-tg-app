@@ -59,6 +59,7 @@ html {
 }
 
 body {
+    font-family: "Gilroy";
     height: 100vh;
     /* background-color: var(--tg-theme-bg-color); */
     background-color: rgb(16, 17, 20);;

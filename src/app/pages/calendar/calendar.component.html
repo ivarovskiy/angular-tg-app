@@ -1,4 +1,43 @@
 <section class="calendar container">
-  <app-date-picker></app-date-picker>
+  <div class="calendar-header">
+    <span>{{ currentMonth | date: 'MMMM, yyyy' }}</span>
+    <div class="calendar-navigation">
+      <button (click)="prevMonth()">
+        <img src="/assets/icons/calendar/prev.svg" alt="previous month" />
+      </button>
+      <button (click)="nextMonth()">
+        <img src="/assets/icons/calendar/next.svg" alt="next month" />
+      </button>
+    </div>
+  </div>
+  <div class="week-days">
+    <ng-container *ngFor="let day of daysOfWeek">
+      <span>
+        {{ day }}
+      </span>
+    </ng-container>
+  </div>
+
+  <div class="days">
+    <ng-container *ngFor="let day of daysInMonth">
+      <div class="day">
+        <app-calendar-day
+          [date]="day.date"
+          [isCurrentMonth]="day.isCurrentMonth"
+          [disabled]="day.isDisabled"
+          [active]="day.date === selectDate"
+          (handleClick)="selectDay($event)"></app-calendar-day>
+
+        @if ((getTaskCount(day.date) | async) && !day.isDisabled) {
+          <div class="task-dots">
+            <div
+              *ngFor="let color of getTaskColors(day.date) | async"
+              [style.backgroundColor]="color"
+              class="task-dot"></div>
+          </div>
+        }</div
+    ></ng-container>
+  </div>
+
   <app-todo-list [isCalendarPage]="true"></app-todo-list>
 </section>

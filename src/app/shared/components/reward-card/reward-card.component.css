@@ -5,16 +5,18 @@
   background: rgb(30, 121, 255);
 
   display: flex;
-  height: 154px;
+  height: 158px;
   color: white;
 }
 
 .chest-content {
+  width: 60%;
   padding: 24px 0 24px 24px;
   display: flex;
   flex-direction: column;
   gap: 14px;
   justify-content: flex-start;
+  z-index: 1;
 }
 
 .chest-title {
@@ -29,8 +31,17 @@
 }
 
 .chest-image {
+  position: relative;
   width: 182px;
   border-radius: 24px;
+}
+
+.image {
+  top: 0;
+  right: 0;
+  border-radius: 24px;
+  position: absolute;
+  object-fit: contain;
 }
 
 .chest-button {

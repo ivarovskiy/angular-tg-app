@@ -104,7 +104,8 @@
 }
 
 .p-datepicker-other-month {
-  opacity: 0;
+  color: #47474e;
+  /* opacity: 0; */
 }
 
 .p-datepicker .p-yearpicker {

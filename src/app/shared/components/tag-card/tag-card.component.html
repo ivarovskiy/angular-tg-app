@@ -1,0 +1,20 @@
+<div class="tag-card-wrapper">
+  <div class="tag-card-navigation">
+    <div class="checkbox-wrapper-40">
+      <label>
+        <input
+          type="checkbox"
+          id="tag-{{ tag.name }}"
+          [checked]="checked"
+          (change)="toggleTagStatus()" />
+        <span class="checkbox"></span>
+      </label>
+    </div>
+    <div class="tag-card" [style.background]="tag.color">
+      {{ tag.name }}
+    </div>
+  </div>
+  <button class="tag-car-edit" (click)="editTag()">
+    <img src="/assets/icons/tag/edit.svg" alt="edit tag" />
+  </button>
+</div>

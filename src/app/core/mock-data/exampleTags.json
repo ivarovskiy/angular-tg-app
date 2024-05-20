@@ -1,0 +1,37 @@
+[
+  {
+    "name": "urgent",
+    "color": "#e27d60",
+    "checked": false
+  },
+  {
+    "name": "important",
+    "color": "#8d8741",
+    "checked": false
+  },
+  {
+    "name": "optional",
+    "color": "#e8a87c",
+    "checked": false
+  },
+  {
+    "name": "completed",
+    "color": "#7395ae",
+    "checked": false
+  },
+  {
+    "name": "in-progress",
+    "color": "#41b3a3",
+    "checked": false
+  },
+  {
+    "name": "review",
+    "color": "#242582",
+    "checked": false
+  },
+  {
+    "name": "scheduled",
+    "color": "#553d67",
+    "checked": false
+  }
+]

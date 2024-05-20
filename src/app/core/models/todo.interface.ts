@@ -1,3 +1,8 @@
+export interface ITag {
+  name: string;
+  color: string;
+}
+
 export interface ITodo {
   id: number;
   time: string;
@@ -5,5 +10,5 @@ export interface ITodo {
   status: boolean;
   title: string;
   description?: string;
-  badges?: string[];
+  tags?: ITag[];
 }

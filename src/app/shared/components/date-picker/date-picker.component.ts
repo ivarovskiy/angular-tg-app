@@ -16,6 +16,6 @@ export class DatePickerComponent {
   todayDate: Date = new Date();
 
   saveCalendar() {
-    this.handleSave.emit();
+    this.handleSave.emit(this.date);
   }
 }

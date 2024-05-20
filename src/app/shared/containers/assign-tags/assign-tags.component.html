@@ -1,0 +1,118 @@
+<section class="assing-tags container">
+  <div class="assign-tags-header">
+    @if (isChooseColorClicked) {
+      <app-color-picker
+        (handleColor)="chooseColor($event)"
+        [choosenColor]="tagColor"></app-color-picker>
+    } @else {
+      <button (click)="goBack()">
+        <img src="/assets/icons/task/chevron-left.svg" alt="back button" />
+      </button>
+      @if (isCreateTagClicked) {
+        <p class="assign-tags-title">Create Tag</p>
+      } @else if (isEditTagClicked) {
+        <p class="assign-tags-title">Edit tag</p>
+      } @else {
+        <p class="assign-tags-title">Assign Tags</p>
+      }
+
+      <div></div>
+    }
+  </div>
+
+  <div class="assign-tags-content">
+    @if (tagsLength > 0 && !isCreateTagClicked && !isEditTagClicked) {
+      <ul class="tags-list">
+        <li *ngFor="let tag of tags$ | async" class="tag-item">
+          <app-tag-card
+            [tag]="tag"
+            (handleSelect)="selectTag($event)"
+            (handleEdit)="editTag($event)"></app-tag-card>
+        </li>
+      </ul>
+      <div class="tags-list-buttons">
+        <button
+          class="assign-tags-form-button tags-list-button-create"
+          (click)="createTag()">
+          Create tag
+        </button>
+        <button
+          class="assign-tags-form-button"
+          [class.active]="selectedTags.length > 0"
+          (click)="saveTags()">
+          Save
+        </button>
+      </div>
+    } @else if (isCreateTagClicked || isEditTagClicked) {
+      <form class="assign-tags-form" [formGroup]="tagForm">
+        <button class="color-preview" (click)="toogleChooseColor()">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <circle
+              cx="12"
+              cy="12"
+              r="12"
+              fill="url(#paint0_angular_292_3692)" />
+            <circle
+              cx="12"
+              cy="12"
+              r="7"
+              [attr.fill]="tagColor"
+              stroke="#101114"
+              stroke-width="2" />
+            <defs>
+              <radialGradient
+                id="paint0_angular_292_3692"
+                cx="0"
+                cy="0"
+                r="1"
+                gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(12 12) rotate(180) scale(12)">
+                <stop offset="0.12" [attr.stop-color]="tagColor" />
+                <stop offset="0.25" [attr.stop-color]="tagColor" />
+                <stop offset="0.365" [attr.stop-color]="tagColor" />
+                <stop offset="0.5" [attr.stop-color]="tagColor" />
+                <stop offset="0.62" [attr.stop-color]="tagColor" />
+                <stop offset="0.75" [attr.stop-color]="tagColor" />
+                <stop offset="0.87" [attr.stop-color]="tagColor" />
+                <stop offset="1" [attr.stop-color]="tagColor" />
+              </radialGradient>
+            </defs>
+          </svg>
+        </button>
+        <input
+          id="tagName"
+          formControlName="name"
+          name="tagName"
+          required
+          autocomplete="off"
+          placeholder="Title" />
+      </form>
+      <div class="assign-tags-form-buttons">
+        @if (isEditTagClicked) {
+          <button (click)="deleteTag()" class="assign-tags-form-button-delete">
+            Delete tag
+          </button>
+        }
+        <button
+          (click)="addTag()"
+          class="assign-tags-form-button"
+          [class.active]="tagForm.valid">
+          Save
+        </button>
+      </div>
+    } @else {
+      <div class="no-tags-wrapper">
+        <p class="no-tags-title">You dont have any tags yet</p>
+        <button class="no-tags-button" (click)="createTag()">
+          <img src="/assets/icons/navigation/add.svg" alt="create a tag" />
+          <p>Create tag</p>
+        </button>
+      </div>
+    }
+  </div>
+</section>

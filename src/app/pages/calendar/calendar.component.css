@@ -1,3 +1,75 @@
 .container {
-    padding: 16px;
+  padding: 16px;
+}
+
+.calendar {
+  width: 100%;
+}
+
+.calendar-navigation {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar-header {
+  color: var(--primary-text-color);
+  font-weight: 700;
+  font-size: 24px;
+
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 24px;
+}
+
+.week-days {
+  font-weight: 500;
+  font-size: 12px;
+  color: #aeaeb4;
+
+  margin-bottom: 12px;
+
+  text-align: center;
+}
+
+.days,
+.week-days {
+  /* position: relative; */
+
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.day {
+  position: relative;
+}
+
+.task-count {
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.task-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px;
+
+  margin-top: 4px;
+}
+
+.task-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import todoList from '../mock-data/exampleTodoList.json';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ITodo } from '@models/todo.interface';
 
 @Injectable({
@@ -12,6 +12,7 @@ export class TodoService {
   private selectedDate = new BehaviorSubject<Date | null>(null);
   private todosForSelectedDate = new BehaviorSubject<ITodo[]>([]);
 
+  todos$ = this.allTodos.asObservable();
   filteredTodos$ = this.todosForSelectedDate.asObservable();
 
   constructor() {
@@ -20,6 +21,20 @@ export class TodoService {
 
   private loadInitialTodos() {
     this.allTodos.next(todoList.todos);
+  }
+
+  getTodos(): Observable<ITodo[]> {
+    return this.todos$;
+  }
+
+  addTodo(todo: ITodo): void {
+    const currentTodos = this.allTodos.getValue();
+    const newTodo = { ...todo, id: currentTodos.length + 1, status: false };
+    this.allTodos.next([...currentTodos, newTodo]);
+
+    console.log(this.allTodos.getValue());
+
+    this.updateFilteredTodos();
   }
 
   setTodosForSelectedDate(date: Date): void {
@@ -54,5 +69,9 @@ export class TodoService {
 
     this.todosForSelectedDate.next(updatedFilteredTodos);
     this.allTodos.next(updatedAllTodos);
+  }
+
+  getTodosCount() {
+    return this.todosForSelectedDate.getValue().length;
   }
 }

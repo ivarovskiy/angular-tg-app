@@ -12,6 +12,7 @@ import { DatePipe } from '@angular/common';
 })
 export class TodoCardComponent {
   @Input() todo!: ITodo;
+  @Input() isCalendarPage?: boolean;
   @Output() toogleTodoStatus = new EventEmitter<number>();
 
   toggleStatus(): void {

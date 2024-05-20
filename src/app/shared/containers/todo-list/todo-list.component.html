@@ -13,6 +13,7 @@
           @for (todo of todos; track todo) {
             <li>
               <app-todo-card
+                [isCalendarPage]="isCalendarPage"
                 [todo]="todo"
                 (toogleTodoStatus)="handleTodoStatus($event)"></app-todo-card>
             </li>

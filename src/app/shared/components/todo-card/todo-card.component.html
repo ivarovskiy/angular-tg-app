@@ -1,4 +1,4 @@
-<div class="todo-container">
+<div class="todo-container" [class.removeBg]="isCalendarPage">
   <div class="todo-checkbox">
     <div class="checkbox-wrapper-40">
       <label>
@@ -23,9 +23,9 @@
 
   <div class="todo-additional-info">
     <div class="todo-badges">
-      @for (badge of todo.badges; track badge) {
-        <div class="badge badge-{{ badge }}">
-          {{ badge }}
+      @for (badge of todo.tags; track badge) {
+        <div class="badge" [style.background]="badge.color">
+          {{ badge.name }}
         </div>
       }
     </div>

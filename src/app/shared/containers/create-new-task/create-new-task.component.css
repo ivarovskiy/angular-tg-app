@@ -28,7 +28,7 @@
   height: 4px;
 
   border-radius: 15%;
-  background-color: #1E1F24;
+  background-color: #1e1f24;
 
   cursor: pointer;
 }
@@ -115,6 +115,10 @@
   color: #1d77ff;
 }
 
+.picked {
+  color: #1d77ff;
+}
+
 .time-picker {
   display: flex;
   gap: 8px;
@@ -149,4 +153,46 @@
   font-weight: 600;
   line-height: 17px;
   color: rgb(255, 255, 255);
+}
+
+.tags-wrapper {
+  display: flex;
+  gap: 12px;
+
+  overflow-x: auto; /* Добавляем горизонтальную прокрутку */
+  white-space: nowrap; /* Убираем перенос строк, чтобы элементы располагались в одну линию */
+  width: 100%; /* Устанавливаем ширину контейнера на 100% */
+}
+
+.tag-card {
+  display: flex;
+
+  gap: 8px;
+
+  width: fit-content;
+  height: 40px;
+
+  padding: 12px;
+
+  font-family: 'Gilroy';
+  font-size: 14px;
+  font-weight: 600;
+
+  color: var(--primary-text-color);
+  border-radius: 12px;
+}
+
+.add-tag {
+  width: 40px;
+  height: 40px;
+
+  padding: 12px;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--primary-text-color);
+  background-color: #1E1F24;
 }

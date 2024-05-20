@@ -1,0 +1,16 @@
+<div class="color-picker">
+  @for (color of colors; track color) {
+    <div
+      class="color"
+      [style.background]="color"
+      (click)="selectColor(color)"
+      (keyup.enter)="selectColor(color)"
+      tabindex="0">
+      @if (choosenColor === color || color === clr) {
+        <div class="choosen">
+          <img src="/assets/icons/tag/select.svg" alt="selected color" />
+        </div>
+      }
+    </div>
+  }
+</div>

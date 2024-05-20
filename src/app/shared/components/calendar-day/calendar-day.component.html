@@ -1,0 +1,8 @@
+<button
+  class="calendar-day"
+  [class.disabled]="!isCurrentMonth || disabled"
+  [class.active]="active"
+  [class.today]="isToday"
+  (click)="toggleDate()">
+  {{ date | date: 'd' }}
+</button>

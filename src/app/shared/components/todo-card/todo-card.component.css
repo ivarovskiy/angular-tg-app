@@ -9,6 +9,10 @@
   background: rgb(25, 26, 31);
 }
 
+.removeBg {
+  background: none;
+}
+
 .checked {
   font-size: 16px;
   font-weight: 600;
@@ -60,8 +64,9 @@
 }
 
 .todo-duration-text {
-  color: rgb(255, 255, 255);
-  font-size: 13px;
+  color: #AEAEB4;
+
+  font-size: 12px;
   font-weight: 600;
   line-height: 24px;
 }
@@ -73,37 +78,20 @@
 }
 
 .badge {
-  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  font-family: "Gilroy";
+  font-size: 12px;
   font-weight: 600;
-  line-height: 24px;
   border-radius: 14px;
   /* width: 60px; */
   height: 24px;
-  text-align: center;
-  padding: 0 8px;
-  line-height: 24px;
+  padding: 5px 8px;
   color: white;
   background: #237786;
-}
-
-.badge-study {
-  color: #36dfff;
-  background: rgba(54, 223, 255, 0.1);
-}
-
-.badge-school {
-  color: #ffba07;
-  background: rgba(255, 186, 7, 0.1);
-}
-
-.badge-housework {
-  color: #8dc772;
-  background: #18375a;
-}
-
-.badge-health {
-  color: rgb(214, 153, 173);
-  background: #c42727;
 }
 
 .checkbox-wrapper-40 {
