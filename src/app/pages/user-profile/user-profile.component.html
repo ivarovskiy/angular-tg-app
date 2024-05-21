@@ -5,15 +5,13 @@
     </button>
     <div class="avatar">
       <img
-        [src]="user.userImageProfile"
+        [src]="tgUser.photo_url"
         alt="image profile"
         appMissingImage
         class="user-avatar" />
     </div>
   </div>
-  <div class="user-name">
-    {{ user.name }}
-  </div>
+  <div class="user-name">{{ tgUser.first_name }} {{ tgUser.last_name }}</div>
   <div class="user-acquisition-statistics-wrapper">
     <div class="user-acquisition-statistics">
       <p>{{ user.friends }}</p>

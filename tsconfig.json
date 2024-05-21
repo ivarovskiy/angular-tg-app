@@ -27,7 +27,8 @@
       "@services/*": ["./src/app/core/services/*"],
       "@models/*": ["./src/app/core/models/*"],
       "@pipes/*": ["./src/app/core/pipes/*"],
-      "@directives/*": ["./src/app/core/directives/*"]
+      "@directives/*": ["./src/app/core/directives/*"],
+      "@environments/*": ["./src/environments/*"],
     }
   },
   "angularCompilerOptions": {

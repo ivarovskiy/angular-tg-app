@@ -5,6 +5,8 @@ import { UserService } from '@services/user.service';
 import { Subscription } from 'rxjs';
 import { MissingImageDirective } from '@directives/missing-image.directive';
 import { DividerModule } from 'primeng/divider';
+import { TelegramService } from '@services/telegram.service';
+import { ApiService } from '@services/http/api.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -16,10 +18,12 @@ import { DividerModule } from 'primeng/divider';
 export class UserProfileComponent implements OnInit, OnDestroy {
   router = inject(Router);
   userService = inject(UserService);
+  tgService = inject(TelegramService);
+  apiService = inject(ApiService);
 
   subscription = new Subscription();
   user!: IUser;
-  //get an image and statistic
+  tgUser!: any;
 
   goBack() {
     this.router.navigate(['']);
@@ -29,16 +33,14 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     console.log('invite');
   }
 
-  // get an user icon
-  // get an user fire days
-  // get an user tokens
-
   ngOnInit(): void {
     this.subscription = this.userService.getUserInfo().subscribe({
       next: response => {
         this.user = response;
       },
     });
+
+    this.tgUser = this.tgService.getUserData();
   }
 
   ngOnDestroy(): void {

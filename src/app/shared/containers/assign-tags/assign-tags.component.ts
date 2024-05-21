@@ -110,6 +110,7 @@ export class AssignTagsComponent implements OnInit, OnDestroy {
   addTag(): void {
     if (this.tagForm.valid) {
       const newTag: ITag = {
+        id: this.tagsLength + 1,
         name: this.tagForm.value.name,
         color: this.tagColor,
         checked: false,
@@ -147,5 +148,16 @@ export class AssignTagsComponent implements OnInit, OnDestroy {
     this.tagsService.deleteTag(this.tag.name);
     this.isEditTagClicked = false;
     this.isChooseColorClicked = false;
+  }
+
+  saveEditedTag() {
+    const updatedTag: ITag = {
+      ...this.tag,
+      name: this.tagForm.value.name,
+      color: this.tagForm.value.color,
+    };
+
+    this.tagsService.editTag(updatedTag);
+    this.isEditTagClicked = false;
   }
 }

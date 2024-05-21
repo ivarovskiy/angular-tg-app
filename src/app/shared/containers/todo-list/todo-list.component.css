@@ -22,6 +22,10 @@
   min-height: 500px; 
 }
 
+.todo-scroll-empty {
+  min-height: 30vh
+}
+
 .todo-scroll::-webkit-scrollbar {
   width: 0;
 }

@@ -1,12 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject, isDevMode } from '@angular/core';
 import todoList from '../mock-data/exampleTodoList.json';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, iif, of } from 'rxjs';
 import { ITodo } from '@models/todo.interface';
+import { ApiService } from './http/api.service';
+import { TelegramService } from './telegram.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TodoService {
+  apiService = inject(ApiService);
+  tgService = inject(TelegramService);
+
   private allTodos = new BehaviorSubject<ITodo[]>([]);
   private filteredTodos = new BehaviorSubject<ITodo[]>([]);
   private selectedDate = new BehaviorSubject<Date | null>(null);
@@ -20,7 +25,18 @@ export class TodoService {
   }
 
   private loadInitialTodos() {
-    this.allTodos.next(todoList.todos);
+    const userId = this.tgService.getUserId();
+
+    this.apiService.getTodos(userId).subscribe({
+      next: todos => {
+        this.allTodos.next(todos);
+        this.updateFilteredTodos();
+      },
+      error: () => {
+        this.allTodos.next(todoList.todos);
+        this.updateFilteredTodos();
+      },
+    });
   }
 
   getTodos(): Observable<ITodo[]> {
@@ -32,8 +48,9 @@ export class TodoService {
     const newTodo = { ...todo, id: currentTodos.length + 1, status: false };
     this.allTodos.next([...currentTodos, newTodo]);
 
-    console.log(this.allTodos.getValue());
+    const userId = this.tgService.getUserId();
 
+    this.apiService.addTodo(userId, newTodo); // этот запрос не работает
     this.updateFilteredTodos();
   }
 

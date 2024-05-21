@@ -21,7 +21,9 @@
         </ul>
       </div>
     } @else {
-      <div class="todo-scroll todo-motivation">
+      <div
+        class="todo-scroll todo-motivation"
+        [class.todo-scroll-empty]="todos.length < 1">
         <p>Just do something you lazy piece of crap</p>
       </div>
     }

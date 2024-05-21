@@ -86,4 +86,16 @@ export class TagsService {
     this.tags.next(currentTags);
     this.selectedTags.next([]);
   }
+
+  editTag(tag: ITag): void {
+    const currentTags = this.tags.getValue();
+    const index = currentTags.findIndex(t => t.id === tag.id);
+
+    if (index !== -1) {
+      console.log('update');
+
+      currentTags[index] = { ...tag, checked: currentTags[index].checked };
+      this.tags.next(currentTags);
+    }
+  }
 }

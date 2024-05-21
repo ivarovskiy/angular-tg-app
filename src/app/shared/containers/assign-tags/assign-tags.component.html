@@ -97,13 +97,20 @@
           <button (click)="deleteTag()" class="assign-tags-form-button-delete">
             Delete tag
           </button>
+          <button
+            (click)="saveEditedTag()"
+            class="assign-tags-form-button"
+            [class.active]="tagForm.valid">
+            Save
+          </button>
+        } @else {
+          <button
+            (click)="addTag()"
+            class="assign-tags-form-button"
+            [class.active]="tagForm.valid">
+            Save
+          </button>
         }
-        <button
-          (click)="addTag()"
-          class="assign-tags-form-button"
-          [class.active]="tagForm.valid">
-          Save
-        </button>
       </div>
     } @else {
       <div class="no-tags-wrapper">

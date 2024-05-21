@@ -2,6 +2,10 @@
   padding: 16px;
 }
 
+.profile {
+  height: calc(100% + 85px);
+}
+
 .back-button {
   position: absolute;
   top: 0;
